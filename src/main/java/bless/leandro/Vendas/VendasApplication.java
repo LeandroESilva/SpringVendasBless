@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class VendasApplication {
 
 	@Value("${application.name}")
-	private String application;
+	private String applicationName;
 
 	public static void main(String[] args) {
 		SpringApplication.run(VendasApplication.class, args);
@@ -22,7 +22,7 @@ public class VendasApplication {
 	}
 	@GetMapping("/hello")
 	public String helloworld(){
-		return "hello world";
+		return applicationName;
 	}
 
 }
