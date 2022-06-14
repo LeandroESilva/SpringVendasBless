@@ -1,20 +1,14 @@
 package bless.leandro.Vendas;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication//(exclude = {DataSourceAutoConfiguration.class})
-@ComponentScan(basePackages = {"bless.leandro.Vendas.repository",
-		"bless.leandro.Vendas.service.MyServices"})
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class }) //Excluir configuração padrão do security
 @RestController
 public class VendasApplication {
-
-	@Value("${application.name}")
-	private String applicationName;
 
 	public static void main(String[] args) {
 		SpringApplication.run(VendasApplication.class, args);
@@ -22,7 +16,7 @@ public class VendasApplication {
 	}
 	@GetMapping("/hello")
 	public String helloworld(){
-		return applicationName;
+		return "Voltou a funcionar";
 	}
 
 }
