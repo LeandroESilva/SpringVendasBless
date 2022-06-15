@@ -1,4 +1,4 @@
-package bless.leandro.Vendas.domain;
+package bless.leandro.Vendas.domain.entity;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

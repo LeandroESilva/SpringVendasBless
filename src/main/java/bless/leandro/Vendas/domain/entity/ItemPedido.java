@@ -1,7 +1,4 @@
-package bless.leandro.Vendas.domain;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
+package bless.leandro.Vendas.domain.entity;
 
 public class ItemPedido {
     private  Integer id;
