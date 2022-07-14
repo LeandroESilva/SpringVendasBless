@@ -19,7 +19,8 @@ public class VendasApplication {
 	@Bean
 	public CommandLineRunner init(@Autowired Clientes clientes){
 		return  args -> {
-			clientes.Salvar(new Cliente("Andrezza"));
+			Cliente cliente = new Cliente("Alícia");
+			clientes.salvar(cliente);
 
 			List<Cliente> buscarClientes = clientes.buscarRegistros();
 			buscarClientes.forEach(System.out::println);

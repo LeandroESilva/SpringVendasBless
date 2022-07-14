@@ -4,10 +4,9 @@ import bless.leandro.Vendas.domain.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.RowMapperResultSetExtractor;
-import org.springframework.jdbc.support.JdbcUtils;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -20,8 +19,8 @@ public class Clientes {
     private static String INSERT = "insert into cliente (nome) values (?)";
     private static String SELECT_ALL = "select * from cliente";
 
-
-    public Cliente Salvar(Cliente cliente){
+    @Transactional
+    public Cliente salvar(Cliente cliente){
         jdbcTemplate.update(INSERT, new Object[]{cliente.getNome()});
         return  cliente;
     }
