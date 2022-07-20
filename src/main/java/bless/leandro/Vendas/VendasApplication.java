@@ -14,16 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class }) //Excluir configuração padrão do security
-@RestController
 public class VendasApplication {
 	@Bean
 	public CommandLineRunner init(@Autowired Clientes clientes){
 		return  args -> {
-			Cliente cliente = new Cliente("Alícia");
-			clientes.salvar(cliente);
+			clientes.salvar( new Cliente("Alicia"));
+			clientes.salvar( new Cliente("Andrezza"));
 
-			List<Cliente> buscarClientes = clientes.buscarRegistros();
-			buscarClientes.forEach(System.out::println);
+			//List<Cliente> buscarClientes = clientes.buscarRegistros();
+			//buscarClientes.forEach(System.out::println);
 		};
 	}
 
