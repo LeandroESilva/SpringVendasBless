@@ -3,6 +3,8 @@ package bless.leandro.Vendas.domain.repositorio;
 import bless.leandro.Vendas.domain.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -17,14 +19,23 @@ import java.util.List;
 //@Repository
 public interface Clientes extends JpaRepository<Cliente, Integer> {
 
-    //Query Metods
+    //Query Metods do JpaRepository ===========================================================================
     List<Cliente> findByNomeLike(String nome);
 
     List<Cliente> findByNomeOrIdOrderById(String nome, Integer id);
 
     boolean existsByNome(String nome);
+    // ==========================================================================================================
+
+    // Consultas por injeção de HQL =================================================================
+    // ==============================================================================================
+    @Query(value = "select c from clientes where c.nome like '%:nome%' ", nativeQuery = true)
+    List<Cliente> buscarPorNome(@Param("nome") String nome);
 
 
+
+    // Metodos de persistencia por EntityMeneger ====================================================
+    // ==============================================================================================
     /*@Autowired
     private JdbcTemplate jdbcTemplate;
 
