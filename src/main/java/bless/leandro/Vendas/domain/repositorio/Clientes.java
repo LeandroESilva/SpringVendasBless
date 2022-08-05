@@ -3,6 +3,7 @@ package bless.leandro.Vendas.domain.repositorio;
 import bless.leandro.Vendas.domain.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -32,6 +33,9 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     @Query(value = "select c from clientes where c.nome like '%:nome%' ", nativeQuery = true)
     List<Cliente> buscarPorNome(@Param("nome") String nome);
 
+    @Query("delete from Cliente c where c.nome = :nome")
+    @Modifying //utilização do hql necessita que seja utilizado a anotação quando for alterar a tabela
+    void deleteByNome(String nome);
 
 
     // Metodos de persistencia por EntityMeneger ====================================================
