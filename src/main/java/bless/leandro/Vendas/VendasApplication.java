@@ -32,9 +32,11 @@ public class VendasApplication {
 			p.setTotal(BigDecimal.valueOf(100.00));
 			pedidos.save(p);
 
-			//c = clientes.findClienteFetchPedidos(c.getId());
-			//System.out.println(c);
-			//System.out.println(c.getPedidos());
+			Cliente cliente = clientes.findClienteFetchPedidos(fulano.getId());
+			System.out.println(cliente);
+			System.out.println(cliente.getPedidos());
+
+			pedidos.findByCliente(fulano).forEach(System.out::println);
 
 
 			/*List<Cliente> buscarClientes = clientes.findAll();
