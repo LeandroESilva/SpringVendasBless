@@ -5,8 +5,6 @@ import bless.leandro.Vendas.domain.repository.Clientes;
 import org.springframework.data .domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -44,7 +42,7 @@ public class ClienteController {
     public void delete(@PathVariable Integer id){
         clientes.findById(id).map(cliente -> {
             clientes.delete(cliente);
-            return cliente;
+            return Void.TYPE;
         }).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
     }
 

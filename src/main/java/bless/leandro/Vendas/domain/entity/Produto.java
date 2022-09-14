@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "Produto")
+@Table(name = "produto")
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,11 +14,13 @@ public class Produto {
     @Column(name = "descricao")
     private  String descricao;
     @Column(name = "preco_unitario")
-    private BigDecimal precoUnitario;
+    private BigDecimal preco;
 
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public Integer getId() { return id; }
 
     public String getDescricao() {
         return descricao;
@@ -28,11 +30,12 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public BigDecimal getPrecoUnitario() {
-        return precoUnitario;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public void setPrecoUnitario(BigDecimal precoUnitario) {
-        this.precoUnitario = precoUnitario;
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 }
+
