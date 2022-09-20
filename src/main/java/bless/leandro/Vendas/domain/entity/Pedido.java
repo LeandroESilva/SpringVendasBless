@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 //lombok
 // @Data // coopilado de metodos contrutor, get, set, equal e hashcode, tostring...
@@ -32,5 +33,8 @@ public class Pedido {
 
     @Column(name = "total", precision = 20, scale = 2)
     private BigDecimal total;
+
+    @OneToMany
+    private List<ItemPedido> itens;
 
 }
