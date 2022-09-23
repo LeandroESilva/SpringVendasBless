@@ -59,6 +59,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Atualiza automaticamente o projeto em alguma mudança sem precisar reiniciar -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
