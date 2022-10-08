@@ -1,5 +1,6 @@
 package bless.leandro.Vendas.domain.entity;
 
+import bless.leandro.Vendas.domain.enums.StatusPedido;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,4 +38,7 @@ public class Pedido {
     @OneToMany
     private List<ItemPedido> itens;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusPedido status;
 }

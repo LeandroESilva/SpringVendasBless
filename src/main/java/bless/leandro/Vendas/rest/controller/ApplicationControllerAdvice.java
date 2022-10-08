@@ -1,5 +1,6 @@
 package bless.leandro.Vendas.rest.controller;
 
+import bless.leandro.Vendas.exception.PedidoNaoEncontradoException;
 import bless.leandro.Vendas.exception.RegraNegocioException;
 import bless.leandro.Vendas.rest.ApiErrors;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,12 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler(RegraNegocioException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiErrors handleRegraNegocioException(RegraNegocioException ex){
+        return new ApiErrors(ex.getMessage());
+    }
+
+    @ExceptionHandler(PedidoNaoEncontradoException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiErrors handlePedidoNotFoundException(PedidoNaoEncontradoException ex){
         return new ApiErrors(ex.getMessage());
     }
 }
