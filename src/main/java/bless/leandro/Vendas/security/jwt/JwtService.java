@@ -1,5 +1,6 @@
-package bless.leandro.Vendas;
+package bless.leandro.Vendas.security.jwt;
 
+import bless.leandro.Vendas.VendasApplication;
 import bless.leandro.Vendas.domain.entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

@@ -2,6 +2,7 @@ package bless.leandro.Vendas.service.imp;
 
 import bless.leandro.Vendas.domain.entity.Usuario;
 import bless.leandro.Vendas.domain.repository.Usuarios;
+import bless.leandro.Vendas.exception.SenhaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
@@ -16,17 +17,24 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UsuarioServiceImp implements UserDetailsService {
 
-   /* @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }*/
-
     @Autowired
     private Usuarios usuarioRepository;
+
+   // @Autowired
+    PasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Transactional
     public Usuario salvar(Usuario usuario){
         return usuarioRepository.save(usuario);
+    }
+
+    public UserDetails autenticar(Usuario usuario){
+        UserDetails user = loadUserByUsername(usuario.getLogin());
+        boolean senha = encoder.matches(usuario.getSenha(),user.getPassword());
+
+        if(senha){
+            return user;
+        }throw  new SenhaInvalidaException();
     }
 
     @Override
