@@ -9,11 +9,25 @@
 		{
 			"name": "Cliente",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZWFuZHJvIiwiZXhwIjoxNjY4MTI3NTQwfQ.iWeict3hx95NaIGPrvj3SVF_H1li6mB3mQp2WUd6VqTG3vYnDxqPi25kR-oDTgWeR-siu_w9DTXrF6IaxSTBJg",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\" : \"CLiente teste\",\r\n    \"cpf\" : \"00000000000\"\r\n}",
+					"raw": "{\r\n    \"nome\" : \"Cliente Teste\",\r\n    \"cpf\" : \"865.514.170-43\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -135,7 +149,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"descricao\" : \"teste1\",\r\n    \"preco\" : 100\r\n}",
+					"raw": "{\r\n   \"descricao\" : \"Produto Teste\",\r\n    \"preco\" : 40.45\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -306,6 +320,94 @@
 						"api",
 						"pedidos",
 						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedido",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"novoStatus\" : \"CANCELADO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/pedidos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pedidos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticar Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\" : \"leandro\",\r\n    \"senha\" : \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\" : \"leandro\",\r\n    \"senha\" : \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
 					]
 				}
 			},
